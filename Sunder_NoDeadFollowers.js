@@ -5,7 +5,7 @@
 
 /*:
  * @plugindesc The dead characters from the party are not drawn anymore on screen
- * @author Sunderw
+ * @author Sunderww
  * @help
  * This plugin prevents the dead characters from following the player,
  * for more realism.
@@ -30,11 +30,11 @@
     return isVisible && !this.actor().isDead();
   };
 
+  // Refresh players after a fight otherwise dead followers are still there
   var _old_Scene_Battle_terminate = Scene_Battle.prototype.terminate;
   Scene_Battle.prototype.terminate = function() {
-    console.log("TERMINATE SCENE BATTLE");
-    $gamePlayer.refresh();
     _old_Scene_Battle_terminate.call(this);
+    $gamePlayer.refresh();
   }
 
 })();
